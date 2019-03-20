@@ -6,9 +6,9 @@ import java.sql.DriverManager;
 public class FabricaConexao {
 
 	private Connection conexao;
-	final private String host = "xxxxxxxxxxxxxxxxxxxxxxxx";
-	final private String user = "xxxxxxxx";
-	final private String passwd = "xxxxxxxxxxx";
+	final private String host = "localhost:3306/weedem";
+	final private String user = "root";
+	final private String passwd = "admin";
 
 	public Connection fazerConexao() {
 
@@ -18,8 +18,8 @@ public class FabricaConexao {
 			Class.forName("com.mysql.jdbc.Driver");
 
 			// Setup the connection with the DB
-			this.conexao = DriverManager
-					.getConnection("jdbc:mysql://" + host + "/feedback?" + "user=" + user + "&password=" + passwd);
+			this.conexao = DriverManager.getConnection(  
+					"jdbc:mysql://localhost:3306/weedem","root","admin");  
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -1,4 +1,4 @@
-package weedem.produtos.model;
+package weedem.usuario.model;
 
 import java.io.Serializable;
 

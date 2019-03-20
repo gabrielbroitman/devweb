@@ -3,7 +3,7 @@ package weedem.usuario.dao;
 import java.sql.SQLException;
 import java.util.List;
 
-import weedem.produtos.model.Pessoa;
+import weedem.usuario.model.Pessoa;
 
 public interface IPessoaDAO {
 	void Inserir(Pessoa _objeto) throws SQLException;
