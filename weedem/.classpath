@@ -11,40 +11,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Broitman/Desktop/Workspace/devweb/libs/mysql-connector-java-5.1.46/mysql-connector-java-5.1.46/mysql-connector-java-5.1.46.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Broitman/Desktop/Workspace/devweb/libs/javax.faces-2.2.8.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Broitman/Desktop/Workspace/devweb/libs/primefaces-6.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Broitman/Desktop/Workspace/devweb/libs/apache-tomcat-9.0.17-windows-x64/apache-tomcat-9.0.17/lib/annotations-api.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Broitman/Desktop/Workspace/devweb/libs/apache-tomcat-9.0.17-windows-x64/apache-tomcat-9.0.17/lib/catalina.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Broitman/Desktop/Workspace/devweb/libs/apache-tomcat-9.0.17-windows-x64/apache-tomcat-9.0.17/lib/catalina-ant.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Broitman/Desktop/Workspace/devweb/libs/apache-tomcat-9.0.17-windows-x64/apache-tomcat-9.0.17/lib/catalina-ha.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Broitman/Desktop/Workspace/devweb/libs/apache-tomcat-9.0.17-windows-x64/apache-tomcat-9.0.17/lib/catalina-storeconfig.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Broitman/Desktop/Workspace/devweb/libs/apache-tomcat-9.0.17-windows-x64/apache-tomcat-9.0.17/lib/catalina-tribes.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Broitman/Desktop/Workspace/devweb/libs/apache-tomcat-9.0.17-windows-x64/apache-tomcat-9.0.17/lib/ecj-4.9.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Broitman/Desktop/Workspace/devweb/libs/apache-tomcat-9.0.17-windows-x64/apache-tomcat-9.0.17/lib/el-api.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Broitman/Desktop/Workspace/devweb/libs/apache-tomcat-9.0.17-windows-x64/apache-tomcat-9.0.17/lib/jasper.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Broitman/Desktop/Workspace/devweb/libs/apache-tomcat-9.0.17-windows-x64/apache-tomcat-9.0.17/lib/jasper-el.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Broitman/Desktop/Workspace/devweb/libs/apache-tomcat-9.0.17-windows-x64/apache-tomcat-9.0.17/lib/jaspic-api.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Broitman/Desktop/Workspace/devweb/libs/apache-tomcat-9.0.17-windows-x64/apache-tomcat-9.0.17/lib/jsp-api.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Broitman/Desktop/Workspace/devweb/libs/apache-tomcat-9.0.17-windows-x64/apache-tomcat-9.0.17/lib/servlet-api.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Broitman/Desktop/Workspace/devweb/libs/apache-tomcat-9.0.17-windows-x64/apache-tomcat-9.0.17/lib/tomcat-api.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Broitman/Desktop/Workspace/devweb/libs/apache-tomcat-9.0.17-windows-x64/apache-tomcat-9.0.17/lib/tomcat-coyote.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Broitman/Desktop/Workspace/devweb/libs/apache-tomcat-9.0.17-windows-x64/apache-tomcat-9.0.17/lib/tomcat-dbcp.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Broitman/Desktop/Workspace/devweb/libs/apache-tomcat-9.0.17-windows-x64/apache-tomcat-9.0.17/lib/tomcat-i18n-cs.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Broitman/Desktop/Workspace/devweb/libs/apache-tomcat-9.0.17-windows-x64/apache-tomcat-9.0.17/lib/tomcat-i18n-de.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Broitman/Desktop/Workspace/devweb/libs/apache-tomcat-9.0.17-windows-x64/apache-tomcat-9.0.17/lib/tomcat-i18n-es.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Broitman/Desktop/Workspace/devweb/libs/apache-tomcat-9.0.17-windows-x64/apache-tomcat-9.0.17/lib/tomcat-i18n-fr.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Broitman/Desktop/Workspace/devweb/libs/apache-tomcat-9.0.17-windows-x64/apache-tomcat-9.0.17/lib/tomcat-i18n-ja.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Broitman/Desktop/Workspace/devweb/libs/apache-tomcat-9.0.17-windows-x64/apache-tomcat-9.0.17/lib/tomcat-i18n-ko.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Broitman/Desktop/Workspace/devweb/libs/apache-tomcat-9.0.17-windows-x64/apache-tomcat-9.0.17/lib/tomcat-i18n-pt-BR.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Broitman/Desktop/Workspace/devweb/libs/apache-tomcat-9.0.17-windows-x64/apache-tomcat-9.0.17/lib/tomcat-i18n-ru.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Broitman/Desktop/Workspace/devweb/libs/apache-tomcat-9.0.17-windows-x64/apache-tomcat-9.0.17/lib/tomcat-i18n-zh-CN.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Broitman/Desktop/Workspace/devweb/libs/apache-tomcat-9.0.17-windows-x64/apache-tomcat-9.0.17/lib/tomcat-jdbc.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Broitman/Desktop/Workspace/devweb/libs/apache-tomcat-9.0.17-windows-x64/apache-tomcat-9.0.17/lib/tomcat-jni.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Broitman/Desktop/Workspace/devweb/libs/apache-tomcat-9.0.17-windows-x64/apache-tomcat-9.0.17/lib/tomcat-util.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Broitman/Desktop/Workspace/devweb/libs/apache-tomcat-9.0.17-windows-x64/apache-tomcat-9.0.17/lib/tomcat-util-scan.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Broitman/Desktop/Workspace/devweb/libs/apache-tomcat-9.0.17-windows-x64/apache-tomcat-9.0.17/lib/tomcat-websocket.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Broitman/Desktop/Workspace/devweb/libs/apache-tomcat-9.0.17-windows-x64/apache-tomcat-9.0.17/lib/websocket-api.jar"/>
 	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
