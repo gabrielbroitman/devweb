@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import weedem.usuario.model.Pessoa;
+import weedem.models.Pessoa;
 
 public class PessoaDAO implements IPessoaDAO {
 

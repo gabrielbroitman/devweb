@@ -1,4 +1,4 @@
-package weedem.usuario.model;
+package weedem.models;
 
 import java.io.Serializable;
 
@@ -8,17 +8,40 @@ public class Pessoa implements Serializable {
 	private int id;
 	private String nome;
 	private String email;
+	private String cpf;
+	private Endereco endereco;
 	
 	public Pessoa() {
 		
 	}
 
-	public Pessoa(int id, String nome, String email) {
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+
+	public Pessoa(int id, String nome, String email, String cpf, Endereco endereco) {
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
+		this.cpf = cpf;
+		this.endereco = endereco;
 	}
 
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	
+
+	
 	public int getId() {
 		return id;
 	}
@@ -81,4 +104,5 @@ public class Pessoa implements Serializable {
 	public String toString() {
 		return "Pessoa [id=" + id + ", nome=" + nome + ", email=" + email + "]";
 	}
+	
 }
