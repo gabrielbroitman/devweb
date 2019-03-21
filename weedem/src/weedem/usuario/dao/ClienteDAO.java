@@ -17,7 +17,7 @@ public class ClienteDAO implements ICliente {
 		this.conexao = _conexao;
 	}
 	
-	public void Inserir(Cliente _objeto) throws SQLException {
+	public void inserir(Cliente _objeto) throws SQLException {
 
 		String SQL = "insert into cliente (id, nome, email, cpf, matriculaCliente) values (?, ?, ?, ?, ?)";
 		
@@ -27,7 +27,6 @@ public class ClienteDAO implements ICliente {
 		ps.setString(2, _objeto.getNome());
 		ps.setString(3, _objeto.getEmail());
 		ps.setString(4, _objeto.getCpf());
-		ps.setInt(5, _objeto.getMatriculaCliente());
 		
 		ps.execute();
 	}
@@ -53,7 +52,7 @@ public class ClienteDAO implements ICliente {
 	
 	
 
-	public Boolean Excluir(int _id) throws SQLException {
+	public Boolean excluir(int _id) throws SQLException {
 
 		String SQL = "delete from cliente where id = ?";
 		
@@ -65,7 +64,7 @@ public class ClienteDAO implements ICliente {
 		return true;
 	}
 
-	public Boolean Atualizar(Cliente _objeto) throws SQLException {
+	public Boolean atualizar(Cliente _objeto) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -89,7 +88,6 @@ public class ClienteDAO implements ICliente {
 			p.setId(rs.getInt(1));
 			p.setNome(rs.getString(2));
 			p.setEmail(rs.getString(3));
-			p.setMatriculaCliente(rs.getInt(4));
 		}
 		
 		return p;
@@ -112,7 +110,6 @@ public class ClienteDAO implements ICliente {
 			p.setNome(rs.getString(2));
 			p.setEmail(rs.getString(3));
 			p.setCpf(rs.getString(rs.getInt(4)));
-			p.setMatriculaCliente(rs.getInt(5));
 			
 			clientes.add(p);
 		}

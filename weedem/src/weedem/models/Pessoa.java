@@ -9,21 +9,25 @@ public class Pessoa implements Serializable {
 	private String nome;
 	private String email;
 	private String cpf;
-	private Endereco endereco;
+	private String endereco;
 	
 	public Pessoa() {
 		
 	}
 
-	public Endereco getEndereco() {
+	public String getEndereco() {
 		return endereco;
 	}
 
-	public void setEndereco(Endereco endereco) {
+	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
+	
+	public Pessoa(int id) {
+		this.id = id;
+	}
 
-	public Pessoa(int id, String nome, String email, String cpf, Endereco endereco) {
+	public Pessoa(int id, String nome, String email, String cpf, String endereco) {
 		this.id = id;
 		this.nome = nome;
 		this.email = email;

@@ -8,13 +8,13 @@ import weedem.models.Cliente;
 
 public interface ICliente {
 
-	void Inserir(Cliente _objeto) throws SQLException;
+	void inserir(Cliente _objeto) throws SQLException;
 	
 	List<Cliente> listarTodos() throws SQLException;
 	
-	Boolean Excluir(int _id) throws SQLException;
+	Boolean excluir(int _id) throws SQLException;
 	
-	Boolean Atualizar(Cliente _objeto) throws SQLException;
+	Boolean atualizar(Cliente _objeto) throws SQLException;
 	
 	Cliente buscarPorId(int _id) throws SQLException;
 }
