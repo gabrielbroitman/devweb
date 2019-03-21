@@ -108,7 +108,6 @@ public class ClienteController extends HttpServlet {
 	private void excluirCliente(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
 		
-		Cliente cliente = new Cliente(id);
 		clienteDAO.excluir(id);
 		response.sendRedirect("list");
 		
