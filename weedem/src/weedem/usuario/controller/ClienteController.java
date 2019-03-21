@@ -96,9 +96,12 @@ public class ClienteController extends HttpServlet {
 		
 	}
 
-	private void detalheCliente(HttpServletRequest request, HttpServletResponse response) {
+	private void detalheCliente(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("DetalheCliente.jsf");
+		Cliente clienteExistente = clienteDAO.buscarPorId(id);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("DetalheCliente.jsf");
+		request.setAttribute("cliente", clienteExistente);
+		dispatcher.forward(request, response);
 		
 	}
 
