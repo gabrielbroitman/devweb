@@ -10,7 +10,13 @@
 	<description>dispensario</description>
 	<dependencies>
 
-
+	<!-- https://mvnrepository.com/artifact/com.sun.faces/jsf-api -->
+<dependency>
+    <groupId>com.sun.faces</groupId>
+    <artifactId>jsf-api</artifactId>
+    <version>2.2.18</version>
+</dependency>
+	
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
