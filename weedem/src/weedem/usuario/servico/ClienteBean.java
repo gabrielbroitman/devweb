@@ -26,6 +26,7 @@ public class ClienteBean {
 	
 	public void gravar() {
 		System.out.println("Salvando cliente: " + this.cliente.getNome() + " !");
+		cliente = new Cliente();
 	}
 
 }
