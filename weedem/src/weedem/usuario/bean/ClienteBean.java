@@ -1,13 +1,23 @@
-package weedem.usuario.servico;
+package weedem.usuario.bean;
+
+import java.sql.SQLException;
 
 import javax.faces.bean.ManagedBean;
 
 import weedem.models.Cliente;
+import weedem.usuario.dao.ClienteDAO;
+
 
 @ManagedBean
 public class ClienteBean {
 	
 	private Cliente cliente = new Cliente();
+	
+	
+	public ClienteBean()  {
+		
+	}
+
 	
 	
 	public Cliente getCliente() {
@@ -24,9 +34,16 @@ public class ClienteBean {
 
 	private String nome;
 	
-	public void gravar() {
+	public void gravar() throws SQLException {
 		System.out.println("Salvando cliente: " + this.cliente.getNome() + " !");
-		cliente = new Cliente();
+		if(this.cliente == null) {
+			throw new RuntimeException("Cliente deve existir!");
+		}
+		
+		
+		new ClienteDAO().inserir(this.cliente);
+		
+		
 	}
 
 }

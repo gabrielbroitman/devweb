@@ -20,7 +20,7 @@ public class FabricaConexao {
 	
 				// Setup the connection with the DB
 				this.conexao = DriverManager.getConnection(  
-						"jdbc:mysql://localhost:3306/weedem","root","admin");  
+						"jdbc:mysql://localhost:3306/weedem","root","");  
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

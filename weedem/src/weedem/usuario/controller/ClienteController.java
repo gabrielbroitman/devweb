@@ -31,16 +31,6 @@ public class ClienteController extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-    
-    public void init() {
-    	this.fabricaConexao = new FabricaConexao();
-    	try {
-    		this.clienteDAO = new ClienteDAO(fabricaConexao.fazerConexao());
-    	} catch (SQLException e) {
-    		e.printStackTrace();
-    	}
-    	
-    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -86,11 +76,11 @@ public class ClienteController extends HttpServlet {
 	private void atualizar(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
 		String nome = request.getParameter("nome");
-		String email = request.getParameter("email");
-		String cpf = request.getParameter("cpf");
-		String endereco = request.getParameter("endereco");
+		//String email = request.getParameter("email");
+		//String cpf = request.getParameter("cpf");
+		//String endereco = request.getParameter("endereco");
 		
-		Cliente cliente = new Cliente(id, nome, email, cpf, endereco);
+		Cliente cliente = new Cliente();
 		clienteDAO.atualizar(cliente);
 		response.sendRedirect("list");
 		
@@ -116,11 +106,12 @@ public class ClienteController extends HttpServlet {
 	private void inserirCliente(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
 		String nome = request.getParameter("nome");
-		String email = request.getParameter("email");
-		String cpf = request.getParameter("cpf");
-		String endereco = request.getParameter("endereco");
+		//String email = request.getParameter("email");
+		//String cpf = request.getParameter("cpf");
+		//String endereco = request.getParameter("endereco");
 		
-		Cliente novoCliente = new Cliente(id, nome, email, cpf, endereco);
+		Cliente novoCliente = new Cliente();
+		novoCliente.setNome(nome);
 		clienteDAO.inserir(novoCliente);
 		response.sendRedirect("list");
 		

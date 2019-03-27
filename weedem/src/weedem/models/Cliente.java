@@ -1,6 +1,8 @@
 package weedem.models;
 
-public class Cliente extends Pessoa {
+import java.io.Serializable;
+
+public class Cliente extends Pessoa implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 

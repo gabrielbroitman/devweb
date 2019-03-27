@@ -8,27 +8,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 import weedem.models.Cliente;
+import weedem.utils.conexao.FabricaConexao;
 
 public class ClienteDAO implements ICliente {
 
-	Connection conexao;
+	FabricaConexao conexao;
 	
-	public ClienteDAO(Connection _conexao) {
-		this.conexao = _conexao;
+	public ClienteDAO() {
+		this.conexao = new FabricaConexao();
 	}
 	
 	public void inserir(Cliente _objeto) throws SQLException {
-
-		String SQL = "insert into cliente (id, nome, email, cpf, matriculaCliente) values (?, ?, ?, ?, ?)";
 		
-		PreparedStatement ps = this.conexao.prepareStatement(SQL);
+		String SQL = "insert into cliente (idCliente, nome_cliente) values (?, ?)";
+		Connection connector = this.conexao.fazerConexao();
+		PreparedStatement ps = connector.prepareStatement(SQL);
 		
-		ps.setInt(1, _objeto.getId());
+		ps.setInt(1, 1);
 		ps.setString(2, _objeto.getNome());
-		ps.setString(3, _objeto.getEmail());
-		ps.setString(4, _objeto.getCpf());
+		//ps.setString(3, _objeto.getEmail());
+		//ps.setString(4, _objeto.getCpf());
 		
 		ps.execute();
+		
+		this.conexao.fecharConexao();
+		
 	}
 	
 //	public boolean updateBook(Book book) throws SQLException {
@@ -55,12 +59,13 @@ public class ClienteDAO implements ICliente {
 	public Boolean excluir(int _id) throws SQLException {
 
 		String SQL = "delete from cliente where id = ?";
-		
-		PreparedStatement ps = this.conexao.prepareStatement(SQL);
+		Connection connector = this.conexao.fazerConexao();
+		PreparedStatement ps = connector.prepareStatement(SQL);
 		
 		ps.setInt(1, _id);
 		
 		ps.execute();
+		this.conexao.fecharConexao();
 		return true;
 	}
 
@@ -75,7 +80,8 @@ public class ClienteDAO implements ICliente {
 		
 		String SQL = "select id, nome, email, matriculaCliente from cliente where id = ?";
 		
-		PreparedStatement ps = this.conexao.prepareStatement(SQL);
+		Connection connector = this.conexao.fazerConexao();
+		PreparedStatement ps = connector.prepareStatement(SQL);
 		ps.setInt(1, _id);
 		
 		rs = ps.executeQuery();
@@ -89,7 +95,7 @@ public class ClienteDAO implements ICliente {
 			p.setNome(rs.getString(2));
 			p.setEmail(rs.getString(3));
 		}
-		
+		this.conexao.fecharConexao();
 		return p;
 	}
 
@@ -99,7 +105,8 @@ public class ClienteDAO implements ICliente {
 			
 		String SQL = "select * from cliente";
 		
-		PreparedStatement ps = this.conexao.prepareStatement(SQL);
+		Connection connector = this.conexao.fazerConexao();
+		PreparedStatement ps = connector.prepareStatement(SQL);
 		rs = ps.executeQuery();
 		
 		while (rs.next()) {
@@ -113,7 +120,7 @@ public class ClienteDAO implements ICliente {
 			
 			clientes.add(p);
 		}
-		
+		this.conexao.fecharConexao();
 		return clientes;
 	}
 
