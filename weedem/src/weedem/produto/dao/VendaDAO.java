@@ -1,4 +1,4 @@
-package weedem.produtos.dao;
+package weedem.produto.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
