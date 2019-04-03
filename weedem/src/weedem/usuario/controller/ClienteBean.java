@@ -82,17 +82,17 @@ public class ClienteBean {
 			throw new RuntimeException("Cliente deve existir!");
 		}
 
-		this.cliente = new ClienteDAO().buscarPorId(this.cliente.getId());
+		this.cliente = new ClienteDAO().buscarPorId(this.getId());
 		
 	}
 	
 	public void excluirClientePorId() throws SQLException {
-		System.out.println("Excluindo cliente de id: " + this.cliente.getId() + " !");
+		System.out.println("Excluindo cliente de id: " + getId() + " !");
 		if (this.cliente == null) {
 			throw new RuntimeException("Cliente deve existir!");
 		}
 
-		new ClienteDAO().excluir(this.cliente.getId());
+		new ClienteDAO().excluir(this.getId());
 	}
 	
 	
