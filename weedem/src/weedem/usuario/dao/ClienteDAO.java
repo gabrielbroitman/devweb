@@ -20,14 +20,15 @@ public class ClienteDAO implements ICliente {
 	
 	public boolean inserir(Cliente _objeto) throws SQLException {
 		
-		String SQL = "insert into cliente (idCliente, nome_cliente) values (?, ?)";
+		String SQL = "insert into cliente ( nome_cliente, email_cliente, endereco_cliente, cpf_cliente) values (?, ?)";
 		Connection connector = this.conexao.fazerConexao();
 		PreparedStatement ps = connector.prepareStatement(SQL);
 		
-		ps.setInt(1, 1);
-		ps.setString(2, _objeto.getNome());
-		//ps.setString(3, _objeto.getEmail());
-		//ps.setString(4, _objeto.getCpf());
+
+		ps.setString(1, _objeto.getNome());
+		ps.setString(2, _objeto.getEmail());
+		ps.setString(3, _objeto.getEndereco());
+		ps.setInt(4, _objeto.getCpf());
 		
 		boolean inseridoComSucesso = ps.execute();
 		
@@ -70,7 +71,7 @@ public class ClienteDAO implements ICliente {
 		
 		ResultSet rs = null;
 		
-		String SQL = "select id, nome, email, matriculaCliente from cliente where id = ?";
+		String SQL = "select idCliente, nome_cliente, email_cliente, endereco_cliente, cpf_cliente from cliente where idCliente = ?";
 		
 		Connection connector = this.conexao.fazerConexao();
 		PreparedStatement ps = connector.prepareStatement(SQL);
@@ -86,6 +87,8 @@ public class ClienteDAO implements ICliente {
 			p.setId(rs.getInt(1));
 			p.setNome(rs.getString(2));
 			p.setEmail(rs.getString(3));
+			p.setEndereco(rs.getString(3));
+			p.setCpf(rs.getInt(4));
 		}
 		this.conexao.fecharConexao();
 		return p;
@@ -108,7 +111,7 @@ public class ClienteDAO implements ICliente {
 			p.setId(rs.getInt(1));
 			p.setNome(rs.getString(2));
 			p.setEmail(rs.getString(3));
-			p.setCpf(rs.getString(rs.getInt(4)));
+			p.setCpf(rs.getInt(rs.getInt(4)));
 			
 			clientes.add(p);
 		}
