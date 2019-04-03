@@ -18,7 +18,7 @@ public class ClienteDAO implements ICliente {
 		this.conexao = new FabricaConexao();
 	}
 	
-	public void inserir(Cliente _objeto) throws SQLException {
+	public boolean inserir(Cliente _objeto) throws SQLException {
 		
 		String SQL = "insert into cliente (idCliente, nome_cliente) values (?, ?)";
 		Connection connector = this.conexao.fazerConexao();
@@ -29,34 +29,31 @@ public class ClienteDAO implements ICliente {
 		//ps.setString(3, _objeto.getEmail());
 		//ps.setString(4, _objeto.getCpf());
 		
-		ps.execute();
+		boolean inseridoComSucesso = ps.execute();
 		
 		this.conexao.fecharConexao();
 		
+		return inseridoComSucesso;
 	}
 	
-//	public boolean updateBook(Book book) throws SQLException {
-//        String sql = "UPDATE book SET title = ?, author = ?, price = ?";
-//        sql += " WHERE book_id = ?";
-//        connect();
-//         
-//        PreparedStatement statement = jdbcConnection.prepareStatement(sql);
-//        statement.setString(1, book.getTitle());
-//        statement.setString(2, book.getAuthor());
-//        statement.setFloat(3, book.getPrice());
-//        statement.setInt(4, book.getId());
-//         
-//        boolean rowUpdated = statement.executeUpdate() > 0;
-//        statement.close();
-//        disconnect();
-//        return rowUpdated;     
-//    }
+	public boolean atualizar(Cliente _objeto) throws SQLException {
+        String sql = "UPDATE cliente SET nome_cliente = ?";
+        sql += " WHERE idCliente = ?";
+        Connection connector = this.conexao.fazerConexao();
+		PreparedStatement ps = connector.prepareStatement(sql);
+		ps.setString(1, _objeto.getNome());
+		ps.setInt(2, _objeto.getId());
+		         
+        boolean rowUpdated = ps.executeUpdate() > 0;
+        conexao.fecharConexao();
+        return rowUpdated;     
+    }
 	
 	
 	
 	
 
-	public Boolean excluir(int _id) throws SQLException {
+	public boolean excluir(int _id) throws SQLException {
 
 		String SQL = "delete from cliente where id = ?";
 		Connection connector = this.conexao.fazerConexao();
@@ -67,11 +64,6 @@ public class ClienteDAO implements ICliente {
 		ps.execute();
 		this.conexao.fecharConexao();
 		return true;
-	}
-
-	public Boolean atualizar(Cliente _objeto) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	public Cliente buscarPorId(int _id) throws SQLException {
