@@ -10,10 +10,13 @@ import java.util.List;
 import weedem.models.Endereco;
 import weedem.models.ItemVenda;
 import weedem.models.Venda;
+import weedem.usuario.dao.ClienteDAO;
 
 public class VendaDAO {
 
 	private Connection conexao;
+	
+	private ClienteDAO clienteDAO;
 	
 	public VendaDAO(Connection conexao){
 		this.conexao = conexao;
@@ -21,13 +24,13 @@ public class VendaDAO {
 	
 
 	public void Inserir(Venda _objeto) throws SQLException {
-		String SQL = "insert into venda (id, valorTotal, dataVenda, cpfCliente) values (?, ?, ?, ?)";
+		String SQL = "insert into venda (data_venda, total_venda, id_cliente, qtd_venda) values (?, ?, ?, ?)";
 
 		PreparedStatement ps = this.conexao.prepareStatement(SQL);
-		ps.setInt(1, _objeto.getId());
+		ps.setDate(1, _objeto.getDataVenda());
 		ps.setDouble(2, _objeto.getValorTotal());
-		ps.setDate(3, _objeto.getDataVenda());
-		ps.setInt(4, _objeto.getCpfCliente());
+		ps.setInt(3, _objeto.getCliente().getId());
+		ps.setInt(4, _objeto.getQtdProdutos());
 
 		ps.execute();
 		ResultSet rs = ps.getGeneratedKeys();
@@ -36,13 +39,12 @@ public class VendaDAO {
 		int i = 0;
 		
 		for (ItemVenda iv : _objeto.getItens()) {
-			SQL = "INSERT INTO ITEMVENDA (SEQ, CODVENDA, CODPRODUTO, PRECOPRODUTO, QTD) VALUES (?, ?, ?, ?, ?)";
+			SQL = "INSERT INTO ITEMVENDA (id_venda, id_produto, qtd) VALUES (?, ?, ?)";
 			ps = conexao.prepareStatement(SQL);
-			ps.setInt(1, i+1);
-			ps.setInt(2, idVenda);
-			ps.setInt(3, iv.getCodProduto());
-			ps.setDouble(4, iv.getPrecoProduto());
-			ps.setInt(5, iv.getQtdProduto());
+			ps.setInt(1, idVenda);
+			ps.setInt(2, iv.getCodProduto());
+			ps.setInt(3, iv.getQtdProduto());
+
 			i++;
 			ps.execute();
 		}
@@ -53,7 +55,7 @@ public class VendaDAO {
 		List<Venda> vendas = new ArrayList<Venda>();
 		ResultSet rs = null;
 
-		String SQL = "select * from venda";
+		String SQL = "select id_venda, data_venda, total_venda, id_cliente, qtd_venda from venda";
 
 		PreparedStatement ps = this.conexao.prepareStatement(SQL);
 
@@ -62,7 +64,24 @@ public class VendaDAO {
 		while (rs.next()) {
 
 			Venda e = new Venda();
-			e = (Venda) rs.getObject(i);
+			e.setId(rs.getInt(1));
+			e.setDataVenda(rs.getDate(2));
+			e.setValorTotal(rs.getInt(3));
+			e.setCliente(this.clienteDAO.buscarPorId(rs.getInt(4)));
+			SQL = "select id_venda, id_produto, qtd from ITEMVENDA where id_venda = ?";
+			PreparedStatement ps2 = conexao.prepareStatement(SQL);
+			ps2.setInt(1, e.getId());
+			ResultSet rs2 = ps.executeQuery();
+			List<ItemVenda> itens = new ArrayList<>();
+			while (rs2.next()) {
+				ItemVenda iv = new ItemVenda();
+				iv.setVenda(venda);
+				
+				itens.add(itemVenda);			
+			}
+			// e.setSituacao(rs.getInt(5));
+		
+			
 
 			vendas.add(e);
 			i++;
