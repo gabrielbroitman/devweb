@@ -39,7 +39,7 @@ public class ProdutoDAO {
 		List<Produto> produtos = new ArrayList<Produto>();
 		ResultSet rs = null;
 
-		String SQL = "select id_produto, id_categoria, id_marca,nome_produto, descricao_produto, preco_produto from produto";
+		String SQL = "select id_produto, id_categoria, id_marca, nome_produto, descricao_produto, preco_produto from produto";
 
 		Connection connector = this.conexao.fazerConexao();
 		PreparedStatement ps = connector.prepareStatement(SQL);

@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head></h:head>
+<h:body>
+	<h1>Cadastro de cliente</h1>
+	<h:form>
+		<fieldset>
+			<legend>Dados do cliente</legend>
+			<h:panelGrid columns="2">
+
+				<h:outputLabel value="Nome:" for="nome" />
+				<h:inputText id="nome" value="#{clienteCadastroBean.cliente.nome}" />
+				
+				<h:outputLabel value="Nome:" for="nome" />
+				<h:inputText id="nome" value="#{clienteCadastroBean.cliente.cpf}" />
+				
+				<h:outputLabel value="Nome:" for="nome" />
+				<h:inputText id="nome" value="#{clienteCadastroBean.cliente.email}" />
+				
+				<h:outputLabel value="Nome:" for="nome" />
+				<h:inputText id="nome" value="#{clienteCadastroBean.cliente.endereco}" />
+
+				<h:commandButton value="Gravar" action="#{clienteCadastroBean.gravar}" />
+			</h:panelGrid>
+		</fieldset>
+	</h:form>
+</h:body>
+</html>

@@ -8,7 +8,7 @@ import weedem.models.Cliente;
 import weedem.usuario.dao.ClienteDAO;
 
 @ManagedBean
-public class ClienteBean {
+public class ClienteCadastroBean {
 
 	private int id;
 	private int cpf;
@@ -18,7 +18,7 @@ public class ClienteBean {
 
 	private Cliente cliente = new Cliente();
 
-	public ClienteBean() {
+	public ClienteCadastroBean() {
 
 	}
 
