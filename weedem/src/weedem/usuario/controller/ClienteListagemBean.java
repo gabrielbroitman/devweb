@@ -26,12 +26,12 @@ public class ClienteListagemBean {
 
 	public void listarClientes() throws SQLException {
 		System.out.println("Buscando clientes!");
-		if (this.cliente == null) {
-			throw new RuntimeException("Cliente deve existir!");
-		}
 
 		this.clientes = new ClienteDAO().listarTodos();
 
+		if (this.clientes == null) {
+			throw new RuntimeException("Clientes devem existir!");
+		}
 	}
 
 }

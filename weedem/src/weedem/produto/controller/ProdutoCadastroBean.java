@@ -8,10 +8,9 @@ import weedem.models.Categoria;
 import weedem.models.Marca;
 import weedem.models.Produto;
 import weedem.produto.dao.ProdutoDAO;
-import weedem.usuario.dao.ClienteDAO;
 
 @ManagedBean
-public class ProdutoDetalheBean {
+public class ProdutoCadastroBean {
 
 	private int id;
 	private Categoria categoria;
@@ -78,22 +77,16 @@ public class ProdutoDetalheBean {
 		this.produto = produto;
 	}
 	
-	public void buscarPorId(int id) throws SQLException {
-		System.out.println("Buscando produto de id: " + id + " !");
+	public void gravar() throws SQLException {
+		System.out.println("Salvando produto: " + this.produto.getNome() + " !");
 		if (this.produto == null) {
 			throw new RuntimeException("Cliente deve existir!");
 		}
 
-		this.produto = new ProdutoDAO().buscarPorId(id);
-	}
-	
-	public void excluirProdutoPorId() throws SQLException {
-		System.out.println("Excluindo produto de id: " + this.produto.getId() + " !");
-		if (this.produto == null) {
-			throw new RuntimeException("Produto deve existir!");
-		}
-		
-		new ProdutoDAO().Excluir(this.produto.getId());
+		new ProdutoDAO().inserir(this.produto);
 	}
 
+
+	
+	
 }

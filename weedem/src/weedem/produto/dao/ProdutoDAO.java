@@ -19,7 +19,7 @@ public class ProdutoDAO {
 		this.conexao = new FabricaConexao();
 	}
 
-	public void Inserir(Produto produto) throws SQLException {
+	public void inserir(Produto produto) throws SQLException {
 		String SQL = "insert into produto ( id_categoria, id_marca,nome_produto, descricao_produto, preco_produto) values (?, ?, ?, ?, ?)";
 
 		Connection connector = this.conexao.fazerConexao();
