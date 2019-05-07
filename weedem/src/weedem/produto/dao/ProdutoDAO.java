@@ -7,7 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import weedem.models.Endereco;
+import weedem.models.Categoria;
+import weedem.models.Marca;
 import weedem.models.Produto;
 import weedem.utils.conexao.FabricaConexao;
 
@@ -37,27 +38,53 @@ public class ProdutoDAO {
 
 	public List<Produto> listarTodos() throws SQLException {
 		List<Produto> produtos = new ArrayList<Produto>();
-		ResultSet rs = null;
+		ResultSet rsProduto = null;
+		ResultSet rsCategoria = null;
+		ResultSet rsMarca = null;
 
-		String SQL = "select id_produto, id_categoria, id_marca, nome_produto, descricao_produto, preco_produto from produto";
+		String produtoSQL = "select id_produto, id_categoria, id_marca, nome_produto, descricao_produto, preco_produto from produto";
+		String categoriaSQL = "select id_categoria ,nome_categoria, descricao_categoria from categoria where id_categoria = ?";
+		String marcaSQL =  "select id_marca, nome_marca, descricao_marca from marca where id_marca = ?";
 
 		Connection connector = this.conexao.fazerConexao();
-		PreparedStatement ps = connector.prepareStatement(SQL);
+		PreparedStatement psProduto = connector.prepareStatement(produtoSQL);
+		PreparedStatement psCategoria = connector.prepareStatement(categoriaSQL);
+		PreparedStatement psMarca = connector.prepareStatement(marcaSQL);;
 
-		rs = ps.executeQuery();
-		int i = 0;
-		while (rs.next()) {
+		
+
+		rsProduto = psProduto.executeQuery();
+		
+		
+		while (rsProduto.next()) {
 
 			Produto e = new Produto();
-			e.setId(rs.getInt(1));
-			e.setCategoria(rs.getInt(2));
-			e.setMarca(rs.getInt(3));
-			e.setNome(rs.getString(4));
-			e.setDescricao(rs.getString(5));
-			e.setPreco(rs.getDouble(6));
+			e.setId(rsProduto.getInt(1));
+
+			
+			psCategoria.setInt(1, rsProduto.getInt(2));
+			psMarca.setInt(1, rsProduto.getInt(3));
+			
+			rsCategoria = psCategoria.executeQuery();
+			rsMarca = psCategoria.executeQuery();
+			
+			while(rsCategoria.next()) {
+				if (e.getCategoria() != null) {
+					e.setCategoria(new Categoria(rsCategoria.getInt(1), rsCategoria.getString(2), rsCategoria.getString(3)));
+				}
+			}
+			while(rsMarca.next()) {
+				if (e.getMarca() != null) {
+					e.setMarca(new Marca(rsMarca.getInt(1), rsMarca.getString(2), rsMarca.getString(3)));
+				}
+			}
+			
+			e.setNome(rsProduto.getString(4));
+			e.setDescricao(rsProduto.getString(5));
+			e.setPreco(rsProduto.getDouble(6));
 
 			produtos.add(e);
-			i++;
+
 		}
 
 		return produtos;
@@ -90,11 +117,20 @@ public class ProdutoDAO {
 
 	public Produto buscarPorId(int _id) throws SQLException {
 		ResultSet rs = null;
+		ResultSet rsCategoria = null;
+		ResultSet rsMarca = null;
 
 		String SQL = "select id_produto, id_categoria, id_marca,nome_produto, descricao_produto, preco_produto from produto where id_produto = ?";
-
+		String categoriaSQL = "select id_categoria ,nome_categoria, descricao_categoria from categoria where id_categoria = ?";
+		String marcaSQL =  "select id_marca, nome_marca, descricao_marca from marca where id_marca = ?";
+		
+		
+		
+		
         Connection connector = this.conexao.fazerConexao();
 		PreparedStatement ps = connector.prepareStatement(SQL);
+		PreparedStatement psCategoria = connector.prepareStatement(categoriaSQL);
+		PreparedStatement psMarca = connector.prepareStatement(marcaSQL);;
 		ps.setInt(1, _id);
 
 		rs = ps.executeQuery();
@@ -104,8 +140,22 @@ public class ProdutoDAO {
 
 			Produto e = new Produto();
 			e.setId(rs.getInt(1));
-			e.setCategoria(rs.getInt(2));
-			e.setMarca(rs.getInt(3));
+			psCategoria.setInt(1, rs.getInt(2));
+			psMarca.setInt(1, rs.getInt(3));
+			
+			rsCategoria = psCategoria.executeQuery();
+			rsMarca = psCategoria.executeQuery();
+			
+			while(rsCategoria.next()) {
+				if (e.getCategoria() != null) {
+					e.setCategoria(new Categoria(rsCategoria.getInt(1), rsCategoria.getString(2), rsCategoria.getString(3)));
+				}
+			}
+			while(rsMarca.next()) {
+				if (e.getMarca() != null) {
+					e.setMarca(new Marca(rsMarca.getInt(1), rsMarca.getString(2), rsMarca.getString(3)));
+				}
+			}
 			e.setNome(rs.getString(4));
 			e.setDescricao(rs.getString(5));
 			e.setPreco(rs.getDouble(6));

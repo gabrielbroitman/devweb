@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import weedem.models.Endereco;
 import weedem.models.ItemVenda;
 import weedem.models.Venda;
 import weedem.usuario.dao.ClienteDAO;

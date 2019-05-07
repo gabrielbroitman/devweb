@@ -8,7 +8,6 @@ import weedem.models.Categoria;
 import weedem.models.Marca;
 import weedem.models.Produto;
 import weedem.produto.dao.ProdutoDAO;
-import weedem.usuario.dao.ClienteDAO;
 
 @ManagedBean
 public class ProdutoDetalheBean {
