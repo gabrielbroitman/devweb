@@ -13,18 +13,18 @@
 			<h:panelGrid columns="2">
 
 				<h:outputLabel value="Nome:" for="nome" />
-				<h:inputText id="nome" value="#{clienteBean.cliente.nome}" />
+				<h:inputText id="nome" value="#{clienteDetalheBean.cliente.nome}" />
 				
 				<h:outputLabel value="Nome:" for="nome" />
-				<h:inputText id="nome" value="#{clienteBean.cliente.cpf}" />
+				<h:inputText id="nome" value="#{clienteDetalheBean.cliente.cpf}" />
 				
 				<h:outputLabel value="Nome:" for="nome" />
-				<h:inputText id="nome" value="#{clienteBean.cliente.email}" />
+				<h:inputText id="nome" value="#{clienteDetalheBean.cliente.email}" />
 				
 				<h:outputLabel value="Nome:" for="nome" />
-				<h:inputText id="nome" value="#{clienteBean.cliente.endereco}" />
+				<h:inputText id="nome" value="#{clienteDetalheBean.cliente.endereco}" />
 
-				<h:commandButton value="Gravar" action="#{clienteBean.gravar}" />
+				<h:commandButton value="Gravar" action="#{clienteDetalheBean.editar}" />
 			</h:panelGrid>
 		</fieldset>
 	</h:form>
