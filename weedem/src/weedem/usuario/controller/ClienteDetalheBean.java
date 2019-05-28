@@ -3,11 +3,13 @@ package weedem.usuario.controller;
 import java.sql.SQLException;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 
 import weedem.models.Cliente;
 import weedem.usuario.dao.ClienteDAO;
 
 @ManagedBean
+@ViewScoped
 public class ClienteDetalheBean {
 
 	private int id;
@@ -72,8 +74,8 @@ public class ClienteDetalheBean {
 		
 		//this.excluido = this.clienteDAO.excluir(this.getId());
 		this.excluido = true;
-		this.cliente = null;
-		this.pesquisado = false;
+		//this.cliente = null;
+		//this.pesquisado = false;
 		
 		System.out.println("Exclusão do cliente " + this.cliente.getNome() + "feita? " + excluido);
 	}
