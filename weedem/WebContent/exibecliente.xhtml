@@ -26,51 +26,38 @@
 			<br />
 			<br />
 
-			<h:form id="dadosCliente"
+			<h:panelGrid  id="dadosCliente" columns="2"
 				rendered="#{clienteDetalheBean.pesquisado == true}">
 
 
 
 				<h:outputLabel value="ID:" for="idUsuario" />
-				<br />
 				<h:outputText id="idUsuario"
 					value="#{clienteDetalheBean.cliente.id}" size="2" />
-				<br />
-				<br />
 
 				<h:outputLabel value="Nome:" for="nome" />
-				<br />
 				<h:outputText id="nome" value="#{clienteDetalheBean.cliente.nome}"
 					size="100" />
-				<br />
-				<br />
 
 				<h:outputLabel value="Endereço completo:" for="nome" />
-				<br />
 				<h:outputText id="endereco"
 					value="#{clienteDetalheBean.cliente.endereco}" size="100" />
-				<br />
-				<br />
 
 				<h:outputLabel value="CPF:" for="cpf" />
-				<br />
 				<h:outputText id="cpf" value="#{clienteDetalheBean.cliente.cpf}"
 					size="50" />
-				<br />
-				<br />
 
 				<h:outputLabel value="E-Mail:" for="email" />
-				<br />
 				<h:outputText id="email" value="#{clienteDetalheBean.cliente.email}"
 					size="50" />
-				<br />
-				<br />
-				<h:commandButton action="#{clienteDetalheBean.excluirClientePorId}"
-					value="Excluir cliente">
-					<f:ajax execute="@form" render="dadosCliente" />
-				</h:commandButton>
 
-			</h:form>
+
+			</h:panelGrid>
+
+			<h:commandButton rendered="#{clienteDetalheBean.pesquisado == true}" action="#{clienteDetalheBean.excluirClientePorId()}"
+				value="Excluir cliente">
+				<f:ajax execute="dadosCliente" render="@all" />
+			</h:commandButton>
 			<h:outputText rendered="#{clienteDetalheBean.excluido == true}"
 				value="Cliente excluido com sucesso!" id="excluido">
 			</h:outputText>

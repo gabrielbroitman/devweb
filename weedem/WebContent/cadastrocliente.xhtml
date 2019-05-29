@@ -13,20 +13,29 @@
 		</ui:define>
 		<ui:define name="conteudo">
 			<h1>Cadastro de cliente</h1>
-			<h:panelGrid id="dadosUsuario" columns="2">
+			<h:form rendered="#{clienteCadastroBean.sucesso == false}"
+				id="dadosUsuario">
 
-				<h:outputLabel value="Nome" for="nome" />
+				<h:outputLabel value="Nome: " for="nome" />
+				<br/>
 				<h:inputText id="nome" value="#{clienteCadastroBean.cliente.nome}"
 					size="100" />
-
+				<br />
+				<br />
 				<h:outputLabel value="Endereço completo" for="nome" />
+				<br/>
 				<h:inputText id="endereco"
 					value="#{clienteCadastroBean.cliente.endereco}" size="100" />
-				<h:outputLabel value="CPF" for="cpf" />
+				<br />
+				<br />
+				<h:outputLabel value="CPF: " for="cpf" />
+				<br/>
 				<h:inputText id="cpf" value="#{clienteCadastroBean.cliente.cpf}"
 					size="50" />
-
-				<h:outputLabel value="E-Mail" for="email" />
+				<br />
+				<br />
+				<h:outputLabel value="E-Mail:" for="email" />
+				<br/>
 				<h:inputText id="email" value="#{clienteCadastroBean.cliente.email}"
 					size="50" />
 
@@ -34,11 +43,12 @@
 				<br />
 				<h:commandButton value="Gravar"
 					action="#{clienteCadastroBean.gravar}">
-					<f:ajax execute="@form" render="sucesso" />
+					<f:ajax execute="@form" render="@all" />
 				</h:commandButton>
-			</h:panelGrid>
-				<h:outputText var="sucesso" id="sucesso">Cadastro feito com sucesso!</h:outputText>
-			
+			</h:form>
+			<h:outputText value="Cadastro feito com sucesso!" rendered="#{clienteCadastroBean.sucesso == true}"
+				id="sucesso"/>
+
 
 		</ui:define>
 	</ui:composition>

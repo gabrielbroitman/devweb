@@ -66,7 +66,7 @@ public class ClienteDetalheBean {
 		}
 	}
 	
-	public void excluirClientePorId() throws SQLException {
+	public boolean excluirClientePorId() throws SQLException {
 		System.out.println("Excluindo cliente de id: " + this.id + " !");
 		if (this.cliente == null) {
 			throw new RuntimeException("Cliente deve existir!");
@@ -74,10 +74,12 @@ public class ClienteDetalheBean {
 		
 		//this.excluido = this.clienteDAO.excluir(this.getId());
 		this.excluido = true;
-		//this.cliente = null;
-		//this.pesquisado = false;
+		this.pesquisado = false;
 		
-		System.out.println("Exclusão do cliente " + this.cliente.getNome() + "feita? " + excluido);
+		System.out.println("Exclusão do cliente " + this.cliente.getNome() + "feita com sucesso? " + excluido);
+		this.cliente = new Cliente();
+		
+		return excluido;
 	}
 
 	public boolean isExcluido() {

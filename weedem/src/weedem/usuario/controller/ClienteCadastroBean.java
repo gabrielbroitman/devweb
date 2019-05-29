@@ -16,6 +16,16 @@ public class ClienteCadastroBean {
 	private String endereco;
 	private String email;
 	private ClienteDAO clienteDAO = new ClienteDAO();
+	
+	private boolean sucesso = false;
+
+	public boolean isSucesso() {
+		return sucesso;
+	}
+
+	public void setSucesso(boolean sucesso) {
+		this.sucesso = sucesso;
+	}
 
 	private Cliente cliente = new Cliente();
 
@@ -66,12 +76,13 @@ public class ClienteCadastroBean {
 			throw new RuntimeException("Cliente deve existir!");
 		}
 		try {
-			if (this.clienteDAO.buscarPorId(this.getId()) != null) {
-				throw new RuntimeException("Cliente com esse id já existe.");
-			}
+//			if (this.clienteDAO.buscarPorId(this.getId()) != null) {
+//				throw new RuntimeException("Cliente com esse id já existe.");
+//			}
 
-			this.clienteDAO.inserir(this.cliente);
+			// this.clienteDAO.inserir(this.cliente);
 			System.out.println("Cliente salvo" + this.cliente.getNome() + "com sucesso!");
+			this.sucesso = true;
 
 		} catch (Exception e) {
 			throw e;
