@@ -61,9 +61,7 @@ public class ClienteListagemBean {
 	public void listarClientes() throws SQLException {
 		System.out.println("Buscando clientes!");
 
-		//this.clientes = this.clienteDAO.listarTodos();
-		this.clientes.add(new Cliente(1));
-		this.clientes.add(new Cliente(2));
+		this.clientes = this.clienteDAO.listarTodos();
 		
 
 		

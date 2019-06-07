@@ -72,15 +72,16 @@ public class ClienteCadastroBean {
 	public void gravar() throws SQLException {
 		System.out.println("Salvando cliente: " + this.cliente.getNome());
 
-		if (this.cliente == null) {
+		if (this.cliente == null || (this.cliente.getNome() == null || this.cliente.getEmail() == null)) {
 			throw new RuntimeException("Cliente deve existir!");
 		}
 		try {
-//			if (this.clienteDAO.buscarPorId(this.getId()) != null) {
-//				throw new RuntimeException("Cliente com esse id já existe.");
-//			}
+			Cliente clienteTest = this.clienteDAO.buscarPorId(this.getId());
+			if (clienteTest != null) {
+				throw new RuntimeException("Cliente com esse id já existe.");
+			}
 
-			// this.clienteDAO.inserir(this.cliente);
+			this.clienteDAO.inserir(this.cliente);
 			System.out.println("Cliente salvo" + this.cliente.getNome() + "com sucesso!");
 			this.sucesso = true;
 

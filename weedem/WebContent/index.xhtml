@@ -1,39 +1,41 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
-  <h:head>
-    <title>Template Web</title>
-  </h:head>
-  <h:body>
-    <h:form id="form">
-      <table width="100%">
-        <tr>
-          <td colspan="2" align="center">
-            <ui:insert name="cabecalho">
-              <h1>Weedem Dispensary</h1>
-            </ui:insert>
-          </td>
-        </tr>
-        <tr>
-          <td width="200px" valign="top">
-            <ui:insert name="menu">
-              <h1>Menu</h1>
-              <h:panelGrid columns="1">
-                <h:commandLink value="Cadastro de cliente" action="cadastrocliente.xhtml"/>
-                <h:commandLink value="Busca de cliente" action="exibecliente.xhtml"/>
-                <h:commandLink value="Lista de clientes" action="listaclientes.xhtml"/>
-              </h:panelGrid>
-            </ui:insert>
-          </td>
-          <td>
-            <ui:insert name="conteudo">
-              Conteúdo
-            </ui:insert>
-          </td>
-        </tr>
-      </table>
-    </h:form>
-  </h:body>
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Template Web</title>
+</h:head>
+<h:body>
+	<p:layout fullPage="true">
+		<p:layoutUnit position="north" size="100" header="Top"
+			resizable="true" closable="true" collapsible="true">
+			<h:outputText value="Top unit content." />
+		</p:layoutUnit>
+
+		<p:layoutUnit position="south" size="100" header="Bottom"
+			resizable="true" closable="true" collapsible="true">
+			<h:outputText value="South unit content." />
+		</p:layoutUnit>
+
+		<p:layoutUnit position="west" size="200" header="Left"
+			resizable="true" closable="true" collapsible="true">
+			<h:form columns="1">
+				<h:commandLink value="Cadastro de cliente"
+					action="cadastrocliente.xhtml" />
+					<br></br><br></br>
+				<h:commandLink value="Busca de cliente" action="exibecliente.xhtml" />
+				<br></br><br></br>
+				<h:commandLink value="Lista de clientes"
+					action="listaclientes.xhtml" />
+			</h:form>
+		</p:layoutUnit>
+
+		<p:layoutUnit position="center">
+			<ui:insert name="conteudo"></ui:insert>
+		</p:layoutUnit>
+	</p:layout>
+</h:body>
 </html>

@@ -50,11 +50,9 @@ public class ClienteDetalheBean {
 		this.excluido = false;
 		System.out.println("Buscando cliente de id: " + this.id + " !");
 		
-		//this.cliente = this.clienteDAO.buscarPorId(this.getId());
+		this.cliente = this.clienteDAO.buscarPorId(this.getId());
 
 		
-		this.cliente.setId(1);
-		this.cliente.setNome("Carlo");
 		
 		System.out.println(this.cliente.getNome());
 		this.falha = false;
@@ -72,7 +70,7 @@ public class ClienteDetalheBean {
 			throw new RuntimeException("Cliente deve existir!");
 		}
 		
-		//this.excluido = this.clienteDAO.excluir(this.getId());
+		this.excluido = this.clienteDAO.excluir(this.getId());
 		this.excluido = true;
 		this.pesquisado = false;
 		

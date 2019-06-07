@@ -2,8 +2,12 @@ package weedem.models;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.bean.SessionScoped;
+
+@SessionScoped
 public class Venda implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -12,13 +16,17 @@ public class Venda implements Serializable {
 	private Date dataVenda;
 	private Cliente cliente;
 
-	private List<ItemVenda> itens;
+	private ArrayList<ItemVenda> itens;
 	private String situacao;
 	
-	public Venda(){}
+	public Venda(){
+		this.itens = new ArrayList<>();
+		this.valorTotal = 0;
+		this.situacao = "CARRINHO";
+		
+	}
 
-	public Venda(int id, double valorTotal, Date dataVenda, Cliente cliente, List<ItemVenda> itens, String situacao) {
-		super();
+	public Venda(int id, double valorTotal, Date dataVenda, Cliente cliente, ArrayList<ItemVenda> itens, String situacao) {
 		this.id = id;
 		this.valorTotal = valorTotal;
 		this.dataVenda = dataVenda;
@@ -26,6 +34,36 @@ public class Venda implements Serializable {
 		this.itens = itens;
 		this.situacao = situacao;
 	}
+	
+	public void adicionaItem(Produto produto) {
+		if(produto == null)
+			return;
+		
+		for (ItemVenda item: itens) {
+			if (item.getIdProduto() == produto.getId()) {
+				item.addQtd();
+				item.updatePrecoTotal();
+				return;
+			}
+		}
+		ItemVenda newItem = new ItemVenda(produto, 1, this);
+		itens.add(newItem);
+		updateTotals();
+	}
+	
+	private void updateTotals() {
+		this.valorTotal = 0.00;
+		for (ItemVenda item : itens) {
+			this.valorTotal += item.getPrecoItem();
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
 
 	public int getId() {
 		return id;
@@ -59,11 +97,11 @@ public class Venda implements Serializable {
 		this.cliente = cliente;
 	}
 
-	public List<ItemVenda> getItens() {
+	public ArrayList<ItemVenda> getItens() {
 		return itens;
 	}
 
-	public void setItens(List<ItemVenda> itens) {
+	public void setItens(ArrayList<ItemVenda> itens) {
 		this.itens = itens;
 	}
 

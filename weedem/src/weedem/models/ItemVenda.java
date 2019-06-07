@@ -9,10 +9,33 @@ public class ItemVenda implements Serializable{
 	private Venda venda;
 	Produto produto;
 	int qtdProduto;
+	double precoItem;
 	
 	public ItemVenda() {
 		
 	}
+	
+	public ItemVenda(Produto produto, int qtd, Venda venda) {
+		this.produto = produto;
+		this.qtdProduto = qtd;
+		this.venda = venda;
+	}
+	
+    public double getPrecoItem() {
+		return precoItem;
+	}
+
+	public void setPrecoItem(double precoItem) {
+		this.precoItem = precoItem;
+	}
+
+	public void updatePrecoTotal() {
+        precoItem = produto.getPreco() * qtdProduto;
+    }
+
+    public void addQtd() {
+        this.qtdProduto++;
+    }
 
 	public int getSeq() {
 		return seq;

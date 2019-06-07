@@ -1,4 +1,4 @@
-package weedem.produto.dao;
+package weedem.venda.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,6 +9,7 @@ import java.util.List;
 
 import weedem.models.ItemVenda;
 import weedem.models.Venda;
+import weedem.produto.dao.ProdutoDAO;
 import weedem.usuario.dao.ClienteDAO;
 import weedem.utils.conexao.FabricaConexao;
 
@@ -74,7 +75,7 @@ public class VendaDAO {
 			ps = connector.prepareStatement(SQL);
 			ps.setInt(1, e.getId());
 			ResultSet rs2 = ps.executeQuery();
-			List<ItemVenda> itens = new ArrayList<>();
+			ArrayList<ItemVenda> itens = new ArrayList<>();
 			while (rs2.next()) {
 				ItemVenda iv = new ItemVenda();
 				
@@ -144,7 +145,7 @@ public class VendaDAO {
 			ps = connector.prepareStatement(SQL);
 			ps.setInt(1, e.getId());
 			ResultSet rs2 = ps.executeQuery();
-			List<ItemVenda> itens = new ArrayList<>();
+			ArrayList<ItemVenda> itens = new ArrayList<>();
 			while (rs2.next()) {
 				ItemVenda iv = new ItemVenda();
 				
