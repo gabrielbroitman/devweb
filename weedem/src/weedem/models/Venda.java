@@ -3,7 +3,6 @@ package weedem.models;
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.faces.bean.SessionScoped;
 
@@ -15,18 +14,20 @@ public class Venda implements Serializable {
 	private double valorTotal;
 	private Date dataVenda;
 	private Cliente cliente;
+	private int qtdTotal = 0;
 
 	private ArrayList<ItemVenda> itens;
 	private String situacao;
-	
-	public Venda(){
+
+	public Venda() {
 		this.itens = new ArrayList<>();
 		this.valorTotal = 0;
 		this.situacao = "CARRINHO";
-		
+
 	}
 
-	public Venda(int id, double valorTotal, Date dataVenda, Cliente cliente, ArrayList<ItemVenda> itens, String situacao) {
+	public Venda(int id, double valorTotal, Date dataVenda, Cliente cliente, ArrayList<ItemVenda> itens,
+			String situacao) {
 		this.id = id;
 		this.valorTotal = valorTotal;
 		this.dataVenda = dataVenda;
@@ -34,12 +35,12 @@ public class Venda implements Serializable {
 		this.itens = itens;
 		this.situacao = situacao;
 	}
-	
+
 	public void adicionaItem(Produto produto) {
-		if(produto == null)
+		if (produto == null)
 			return;
-		
-		for (ItemVenda item: itens) {
+
+		for (ItemVenda item : itens) {
 			if (item.getIdProduto() == produto.getId()) {
 				item.addQtd();
 				item.updatePrecoTotal();
@@ -48,22 +49,19 @@ public class Venda implements Serializable {
 		}
 		ItemVenda newItem = new ItemVenda(produto, 1, this);
 		itens.add(newItem);
-		updateTotals();
+		atualizaValorCarrinho();
 	}
-	
-	private void updateTotals() {
+
+	private void atualizaValorCarrinho() {
 		this.valorTotal = 0.00;
-		for (ItemVenda item : itens) {
-			this.valorTotal += item.getPrecoItem();
+		this.qtdTotal = 0;
+		if (itens.size() > 0) {
+			for (ItemVenda item : itens) {
+				this.valorTotal += item.getPrecoItem();
+				this.qtdTotal += item.getQtdProduto();
+			}
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
 
 	public int getId() {
 		return id;
@@ -112,7 +110,7 @@ public class Venda implements Serializable {
 	public void setSituacao(String situacao) {
 		this.situacao = situacao;
 	}
-	
+
 	public int getQtdProdutos() {
 		return this.getItens().size();
 	}
