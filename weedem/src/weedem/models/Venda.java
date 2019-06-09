@@ -36,20 +36,21 @@ public class Venda implements Serializable {
 		this.situacao = situacao;
 	}
 
-	public void adicionaItem(Produto produto) {
+	public boolean adicionaItem(Produto produto) {
 		if (produto == null)
-			return;
+			return false;
 
 		for (ItemVenda item : itens) {
 			if (item.getIdProduto() == produto.getId()) {
 				item.addQtd();
 				item.updatePrecoTotal();
-				return;
+				return true;
 			}
 		}
 		ItemVenda newItem = new ItemVenda(produto, 1, this);
 		itens.add(newItem);
 		atualizaValorCarrinho();
+		return true;
 	}
 
 	private void atualizaValorCarrinho() {

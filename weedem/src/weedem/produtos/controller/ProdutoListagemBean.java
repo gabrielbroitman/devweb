@@ -14,11 +14,12 @@ import weedem.produto.dao.ProdutoDAO;
 @ManagedBean
 public class ProdutoListagemBean {
 
+	private String nome;
+	private String categoria;
+	
 	@Inject
 	private Venda venda;
 
-	private String nome;
-	private String categoria;
 
 	private List<Produto> produtos = new ArrayList<>();
 	private ProdutoDAO produtoDAO = new ProdutoDAO();
@@ -42,11 +43,15 @@ public class ProdutoListagemBean {
 
 	public void adicionarAoCarrinho(Produto produto, int qtd) {
 		int i = 0;
-		while (i < qtd) {
-			this.venda.adicionaItem(produto);
+		
+		while (i < qtd && this.falha != true) {
+			this.falha = !this.venda.adicionaItem(produto);
 			i++;
+			
 		}
+		
 	}
+	
 
 	public String getNome() {
 		return nome;
