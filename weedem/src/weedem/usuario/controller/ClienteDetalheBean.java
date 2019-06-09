@@ -52,12 +52,13 @@ public class ClienteDetalheBean {
 		
 		this.cliente = this.clienteDAO.buscarPorId(this.getId());
 
-		
+		if (this.cliente != null) {
 		
 		System.out.println(this.cliente.getNome());
 		this.falha = false;
 		this.pesquisado = true;
 		
+		}
 		if (this.cliente == null || this.getId() == 0) {
 			this.pesquisado = false;
 			this.falha = true;
