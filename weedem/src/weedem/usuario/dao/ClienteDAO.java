@@ -69,21 +69,26 @@ public class ClienteDAO implements ICliente {
 
 		String SQL = "select id_cliente, nome_cliente, email_cliente, endereco_cliente, cpf_cliente from cliente where id_cliente = ?";
 
-		Connection connector = this.conexao.fazerConexao();
-		PreparedStatement ps = connector.prepareStatement(SQL);
-		ps.setInt(1, _id);
+		
+		
+		if (_id > 0) {
+			Connection connector = this.conexao.fazerConexao();
+			PreparedStatement ps = connector.prepareStatement(SQL);
+			ps.setInt(1, _id);
 
-		rs = ps.executeQuery();
+			rs = ps.executeQuery();
 
-		if (rs.next()) {
+			if (rs.next()) {
 
-			p = new Cliente();
+				p = new Cliente();
 
-			p.setId(rs.getInt(1));
-			p.setNome(rs.getString(2));
-			p.setEmail(rs.getString(3));
-			p.setEndereco(rs.getString(4));
-			p.setCpf(rs.getInt(5));
+				p.setId(rs.getInt(1));
+				p.setNome(rs.getString(2));
+				p.setEmail(rs.getString(3));
+				p.setEndereco(rs.getString(4));
+				p.setCpf(rs.getInt(5));
+			}
+
 		}
 		this.conexao.fecharConexao();
 
