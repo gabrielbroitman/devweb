@@ -14,12 +14,13 @@ import weedem.produto.dao.ProdutoDAO;
 @ManagedBean
 public class ProdutoListagemBean {
 
-	private String nome;
-	private String categoria;
-	
 	@Inject
 	private Venda venda;
+	
+	private String nome;
+	private String categoria;
 
+	private int qtdProdutos = 0;
 
 	private List<Produto> produtos = new ArrayList<>();
 	private ProdutoDAO produtoDAO = new ProdutoDAO();
@@ -30,34 +31,39 @@ public class ProdutoListagemBean {
 	public void listarProdutos() throws SQLException {
 		System.out.println("Buscando produtos!");
 
-		this.produtos = this.produtoDAO.listarTodos();
+		// this.produtos = this.produtoDAO.listarTodos();
+		this.qtdProdutos = this.produtos.size();
+		Produto p = new Produto();
+		p.setNome("öi");
+		this.produtos.add(p);
+		if (this.produtos != null) {
+			this.pesquisado = true;
 
-		this.pesquisado = true;
-
-		if (this.produtos == null || this.produtos.isEmpty() || this.nome.equals("Gabriel")) {
-			this.falha = true;
-			this.pesquisado = false;
+			if (this.produtos == null || this.produtos.isEmpty() || this.nome.equals("Gabriel")) {
+				this.falha = true;
+				this.pesquisado = false;
+			}
 		}
 
 	}
 
 	public void adicionarAoCarrinho(Produto produto, int qtd) {
 		int i = 0;
-		
+
 		while (i < qtd && this.falha != true) {
 			this.falha = !this.venda.adicionaItem(produto);
 			i++;
-			
+
 		}
-		
+
 	}
-	
 
 	public String getNome() {
 		return nome;
 	}
 
 	public ProdutoListagemBean() {
+		
 	}
 
 	public void setNome(String nome) {
