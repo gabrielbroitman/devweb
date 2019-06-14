@@ -21,7 +21,7 @@ public class ProdutoDAO {
 	}
 
 	public void inserir(Produto produto) throws SQLException {
-		String SQL = "insert into produto ( id_categoria, id_marca,nome_produto, descricao_produto, preco_produto) values (?, ?, ?, ?, ?)";
+		String SQL = "insert into produto ( id_categoria, id_marca,nome_produto, descricao_produto, preco_produto, url_img) values (?, ?, ?, ?, ?, ?)";
 
 		Connection connector = this.conexao.fazerConexao();
 		PreparedStatement ps = connector.prepareStatement(SQL);
@@ -31,6 +31,7 @@ public class ProdutoDAO {
 		ps.setString(3, produto.getNome());
 		ps.setString(4, produto.getDescricao());
 		ps.setDouble(5, produto.getPreco());
+		ps.setString(6, produto.getImgUrl());
 
 		ps.execute();
 
@@ -42,7 +43,7 @@ public class ProdutoDAO {
 		ResultSet rsCategoria = null;
 		ResultSet rsMarca = null;
 
-		String produtoSQL = "select id_produto, id_categoria, id_marca, nome_produto, descricao_produto, preco_produto from produto";
+		String produtoSQL = "select id_produto, id_categoria, id_marca, nome_produto, descricao_produto, preco_produto, url_img from produto";
 		String categoriaSQL = "select id_categoria ,nome_categoria, descricao_categoria from categoria where id_categoria = ?";
 		String marcaSQL =  "select id_marca, nome_marca, descricao_marca from marca where id_marca = ?";
 
@@ -66,7 +67,7 @@ public class ProdutoDAO {
 			psMarca.setInt(1, rsProduto.getInt(3));
 			
 			rsCategoria = psCategoria.executeQuery();
-			rsMarca = psCategoria.executeQuery();
+			rsMarca = psCategoria.getResultSet();
 			
 			while(rsCategoria.next()) {
 				if (e.getCategoria() != null) {
@@ -82,6 +83,7 @@ public class ProdutoDAO {
 			e.setNome(rsProduto.getString(4));
 			e.setDescricao(rsProduto.getString(5));
 			e.setPreco(rsProduto.getDouble(6));
+			e.setImgUrl(rsProduto.getString(7));
 
 			produtos.add(e);
 
@@ -120,7 +122,7 @@ public class ProdutoDAO {
 		ResultSet rsCategoria = null;
 		ResultSet rsMarca = null;
 
-		String SQL = "select id_produto, id_categoria, id_marca,nome_produto, descricao_produto, preco_produto from produto where id_produto = ?";
+		String SQL = "select id_produto, id_categoria, id_marca,nome_produto, descricao_produto, preco_produto, url_img from produto where id_produto = ?";
 		String categoriaSQL = "select id_categoria ,nome_categoria, descricao_categoria from categoria where id_categoria = ?";
 		String marcaSQL =  "select id_marca, nome_marca, descricao_marca from marca where id_marca = ?";
 		

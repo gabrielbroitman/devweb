@@ -15,47 +15,58 @@
 		<ui:define name="conteudo">
 			<h1>Catálogo de produtos</h1>
 			<h:form id="buscaId">
-				<h:outputLabel value="Nome do Produto " for="nomeProduto" />
-				<h:inputText class="nomeProduto" id="nomeProduto"
-					value="#{produtoListagemBean.nome}" size="20" />
-				<h:commandButton partialSubmit="true" value="Buscar"
-					action="#{produtoListagemBean.listarProdutos}">
-					<f:ajax execute="@form" render="@all" />
-				</h:commandButton>
-			</h:form>
-			<br />
-			<br />
-			<br />
-
-			<p:dataGrid  var="produto" value="#{produtoListagemBean.produtos}" columns="3"
-				layout="grid" rows="12" rendered="#{produtoListagemBean.pesquisado == true}" paginator="true" id="produtos"
-				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-				rowsPerPageTemplate="6,12,16">
-
-				<f:facet name="header">
-            Produtos
-        </f:facet>
-
-				<p:panel header="#{produto.nome}" style="text-align:center">
-					<h:panelGrid columns="1" style="width:100%">
-						<!-- <p:graphicImage name="demo/images/car/#{car.brand}.gif" /> -->
-
-						<h:outputText value="#{produto.marca}" />
-
-<!-- 						<p:commandLink update=":form:carDetail"> -->
-<!-- 							<h:outputText styleClass="pi pi-search" style="margin:0 auto;" /> -->
-<!-- 							<f:setPropertyActionListener value="#{car}" -->
-<!-- 								target="#{dataGridView.selectedCar}" /> -->
-<!-- 						</p:commandLink> -->
-					</h:panelGrid>
+				<p:panel header="Filtros">
+					<h:outputLabel value="Nome do Produto " for="nomeProduto" />
+					<h:inputText class="nomeProduto" id="nomeProduto"
+						value="#{produtoListagemBean.nome}" size="20" />
+					<h:outputText value="Categoria do Produto " for="categoriaProduto" />
+					<p:selectOneMenu value="#{produtoListagemBean.categoria}" size="20">
+						<f:selectItems value="#{produtoListagemBean.categorias}" />
+					</p:selectOneMenu>
+					<h:commandButton partialSubmit="true" value="Buscar"
+						onclick="#{produtoListagemBean.listarProdutos()}">
+						<f:ajax execute="@form" render="@all" />
+					</h:commandButton>
 				</p:panel>
+				<br />
+				<br />
+				<br />
 
-			</p:dataGrid>
+				<h:dataTable value="#{produtoListagemBean.produtos}" var="produto"
+					styleClass="order-table" headerClass="order-table-header"
+					rowClasses="order-table-odd-row,order-table-even-row">
+
+					<h:column>
+						<!-- column header -->
+						<f:facet name="header">Código</f:facet>
+						<!-- row record -->
+    				#{produto.id}
+    			</h:column>
+    			<h:column>
+						<!-- column header -->
+						<f:facet name="header">Imagem</f:facet>
+						<!-- row record -->
+    				#{produto.id}
+    			</h:column>
+
+					<h:column>
+						<f:facet name="header">Nome do Produto</f:facet>
+    				#{produto.nome}
+    			</h:column>
+
+					<h:column>
+						<f:facet name="header">Preco</f:facet>
+    				#{produto.preco}
+    			</h:column>
+
+				</h:dataTable>
+
+			</h:form>
+
 
 			<h:outputText rendered="#{produtoListagemBean.produtos.size() == 0}"
 				value="Nenhum produto para listar" id="falha">
 			</h:outputText>
-
 
 
 		</ui:define>

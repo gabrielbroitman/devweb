@@ -1,12 +1,12 @@
 package weedem.produto.controller;
 
-import java.sql.SQLException;
-
 import javax.faces.bean.ManagedBean;
+import javax.inject.Inject;
 
 import weedem.models.Categoria;
 import weedem.models.Marca;
 import weedem.models.Produto;
+import weedem.models.Venda;
 import weedem.produto.dao.ProdutoDAO;
 
 @ManagedBean
@@ -18,8 +18,58 @@ public class ProdutoDetalheBean {
 	private String nome;
 	private String descricao;
 	private double preco;
+
+	private Produto produto;
+
+	private ProdutoDAO produtoDAO = new ProdutoDAO();
 	
-	private Produto produto = new Produto();
+	private boolean falha = false;
+	private boolean pesquisado = false;
+	
+	@Inject
+	private Venda venda;
+
+	public void adicionarAoCarrinho(Produto produto, int qtd) {
+		int i = 0;
+
+		while (i < qtd && this.falha != true) {
+			this.falha = !this.venda.adicionaItem(produto);
+			i++;
+
+		}
+	}
+
+	public Produto getProduto() {
+		return produto;
+	}
+
+	public void setProduto(Produto produto) {
+		this.produto = produto;
+	}
+
+	public boolean isFalha() {
+		return falha;
+	}
+
+	public void setFalha(boolean falha) {
+		this.falha = falha;
+	}
+
+	public boolean isPesquisado() {
+		return pesquisado;
+	}
+
+	public void setPesquisado(boolean pesquisado) {
+		this.pesquisado = pesquisado;
+	}
+
+	public Venda getVenda() {
+		return venda;
+	}
+
+	public void setVenda(Venda venda) {
+		this.venda = venda;
+	}
 
 	public int getId() {
 		return id;
@@ -67,32 +117,6 @@ public class ProdutoDetalheBean {
 
 	public void setPreco(double preco) {
 		this.preco = preco;
-	}
-
-	public Produto getProduto() {
-		return produto;
-	}
-
-	public void setProduto(Produto produto) {
-		this.produto = produto;
-	}
-	
-	public void buscarPorId(int id) throws SQLException {
-		System.out.println("Buscando produto de id: " + id + " !");
-		if (this.produto == null) {
-			throw new RuntimeException("Cliente deve existir!");
-		}
-
-		this.produto = new ProdutoDAO().buscarPorId(id);
-	}
-	
-	public void excluirProdutoPorId() throws SQLException {
-		System.out.println("Excluindo produto de id: " + this.produto.getId() + " !");
-		if (this.produto == null) {
-			throw new RuntimeException("Produto deve existir!");
-		}
-		
-		new ProdutoDAO().Excluir(this.produto.getId());
 	}
 
 }

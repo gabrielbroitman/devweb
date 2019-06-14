@@ -11,7 +11,16 @@ public class Produto implements Serializable{
 	private String nome;
 	private String descricao;
 	private double preco;
+	private String url_img;
 	
+	public String getImgUrl() {
+		return url_img;
+	}
+
+	public void setImgUrl(String imgUrl) {
+		this.url_img = imgUrl;
+	}
+
 	public Produto() {
 		
 	}

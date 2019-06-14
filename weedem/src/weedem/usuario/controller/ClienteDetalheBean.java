@@ -75,7 +75,7 @@ public class ClienteDetalheBean {
 		this.excluido = true;
 		this.pesquisado = false;
 
-		System.out.println("Exclus�o do cliente " + this.cliente.getNome() + "feita com sucesso? " + excluido);
+		System.out.println("Exclus�o do cliente " + this.cliente.getNome() + " feita com sucesso? " + excluido);
 		this.cliente = new Cliente();
 
 		return excluido;

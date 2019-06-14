@@ -1,0 +1,82 @@
+insert into categoria (nome_categoria, descricao_categoria) values ("Concentrados", "Extrações com solventes e sem solventes" );
+insert into categoria (nome_categoria, descricao_categoria) values ("Terpenos", "Terpenos extraídos");
+insert into categoria (nome_categoria, descricao_categoria) values ("Extrações", "Tinctures e florais");
+insert into categoria (nome_categoria, descricao_categoria) values ("Comestiveis", "Alimentos com infusion de canabinóides" );
+insert into categoria (nome_categoria, descricao_categoria) values ("Vaporizadores", "Vaporizadores" );
+insert into categoria (nome_categoria, descricao_categoria) values ("Acessórios", "Diversos" );
+
+// GOVBR
+insert into marca (nome_marca, descricao_marca) values ("GOVBR", "Marca de produtos produzidos pelo SUS");
+
+insert into produto (id_categoria, id_marca, nome_produto, url_img, descricao_produto, preco_produto) 
+values (3, 1, "Tintura 1000mg", "", "", 00.00);
+
+insert into produto (id_categoria, id_marca, nome_produto, url_img, descricao_produto, preco_produto) 
+values (3, 1, "Tintura 4000mg", "", "", 00.00);
+
+insert into produto (id_categoria, id_marca, nome_produto, url_img, descricao_produto, preco_produto) 
+values (3, 1, "Tintura 500mg", "", "", 00.00);
+
+
+//IGNITE
+insert into marca (nome_marca, descricao_marca) values ("Ignite", "by DB.");
+
+insert into produto (id_categoria, id_marca, nome_produto, url_img, descricao_produto, preco_produto) 
+values (3, 2, "Unflavored CBD Drops 1000mg", "", "Tintura de CBD", 00.00);
+
+insert into produto (id_categoria, id_marca, nome_produto, url_img, descricao_produto, preco_produto) 
+values (1, 2, "Calm | Bubble Gum CBD Vape Pen", "", "Vaporizador + Cartucho de CBD - Bubble Gum - Calmaria", 00.00);
+
+insert into produto (id_categoria, id_marca, nome_produto, url_img, descricao_produto, preco_produto) 
+values (1, 2, "SFV OG Live Resin Sauce", "", "Extrato SFV OG - Para uso diurno", 00.00);
+
+
+
+//WEST COAST CULTURE
+insert into marca (nome_marca, descricao_marca) values ("West Coast Culture", "Shatters and Concentrates");
+
+insert into produto (id_categoria, id_marca, nome_produto, url_img, descricao_produto, preco_produto) 
+values (3, 3, "CureBD™ Tincture - Kiwi 1000mg", "", "Tintura 1000mg com contador de gotas de 1ml - 30ml", 00.00);
+
+insert into produto (id_categoria, id_marca, nome_produto, url_img, descricao_produto, preco_produto) 
+values (1, 3, "CUREpen™ Cartridge - Strawberry Banana", "", "SEM VG E SEM PG - Cartucho de Strawberry Banana", 00.00);
+
+insert into produto (id_categoria, id_marca, nome_produto, url_img, descricao_produto, preco_produto) 
+values (1, 3, "Gelato Shatter", "", "Shatter do Gelato - Sativa perfeita para uso diurno", 00.00);
+
+
+//MY BEST BUD
+insert into marca (nome_marca, descricao_marca) values ("My Best Bud", "Produtos para cães e gatos.");
+
+insert into produto (id_categoria, id_marca, nome_produto, url_img, descricao_produto, preco_produto) 
+values (3, 4, "20:1 (CBD/THC) Pet Liquid Supplement 15ml", "", "Tintura para cachorros e gatos.", 00.00);
+
+insert into produto (id_categoria, id_marca, nome_produto, url_img, descricao_produto, preco_produto) 
+values (3, 4, "1:1 (CBD/THC) Pet Liquid Supplement 15ml", "", "Tintura para cachorros e gatos.", 00.00);
+
+
+//PAX E VOLCANO
+insert into marca (nome_marca, descricao_marca) values ("PAX Inc.", "Vaporizadores");
+
+insert into produto (id_categoria, id_marca, nome_produto, url_img, descricao_produto, preco_produto) 
+values (5, 5, "PAX 3", "", "Vaporizador para ervas e concentrados.", 00.00);
+
+insert into produto (id_categoria, id_marca, nome_produto, url_img, descricao_produto, preco_produto) 
+values (5, 5, "PAX 2", "", "Vaporizador para ervas secas.", 00.00);
+
+insert into marca (nome_marca, descricao_marca) values ("Volcano", "Desktop Vaporizer");
+
+insert into produto (id_categoria, id_marca, nome_produto, url_img, descricao_produto, preco_produto) 
+values (5, 6, "Volcano Vaporizer - com 3 bags", "", "", 00.00);
+
+insert into produto (id_categoria, id_marca, nome_produto, url_img, descricao_produto, preco_produto) 
+values (5, 6, "Volcano Vaporizer - com 2 bags", "", "", 00.00);
+
+
+
+
+
+
+
+
+
