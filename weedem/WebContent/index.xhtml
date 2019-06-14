@@ -6,38 +6,40 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	<title>Template Web</title>
+	<title>Weedem</title>
 </h:head>
 <h:body>
-	<p:layout fullPage="true">
-		<p:layoutUnit position="north" size="100" header="Top"
-			resizable="true" closable="true" collapsible="true">
-			<h:outputText value="Top unit content." />
+
+
+	<p:layout  style="background-color:black" fullPage="true">
+		<p:layoutUnit zindex="199" style="padding:0;overflow:visible"
+			scrollable="null" position="north" >
+				<h:outputText width="100%" value="Weedem CO." />
+				<h:form columns="1">
+					<p:menubar
+						style="background-color:green">
+						<p:submenu label="Clientes">
+							<p:menuitem value="Busca Cliente" action="exibecliente.xhtml" />
+							<p:menuitem value="Lista de clientes"
+								action="listaclientes.xhtml" ajax="true" />
+
+						</p:submenu>
+						<p:submenu label="Produtos">
+							<p:menuitem value="Catálogo de produtos"
+								action="listaprodutos.xhtml" />
+						</p:submenu>
+						<p:submenu label="Carrinho">
+						</p:submenu>
+					</p:menubar>
+				</h:form>
 		</p:layoutUnit>
 
-		<p:layoutUnit position="south" size="100" header="Bottom"
-			resizable="true" closable="true" collapsible="true">
-			<h:outputText value="South unit content." />
+		<p:layoutUnit position="south" size="50">
+			<h:outputText value="Desenvolvido por Gabriel Broitman" />
 		</p:layoutUnit>
 
-		<p:layoutUnit position="west" size="200" header="Left"
-			resizable="true" closable="true" collapsible="true">
-			<h:form columns="1">
-				<h:commandLink value="Cadastro de cliente"
-					action="cadastrocliente.xhtml" />
-				<br></br>
-				<br></br>
-				<h:commandLink value="Busca de cliente" action="exibecliente.xhtml" />
-				<br></br>
-				<br></br>
-				<h:commandLink value="Lista de clientes"
-					action="listaclientes.xhtml" />
-				<br></br>
-				<br></br>
-				<h:commandLink value="Catálogo de produtos"
-					action="listaprodutos.xhtml" />
-			</h:form>
-		</p:layoutUnit>
+
+
 
 		<p:layoutUnit position="center">
 			<ui:insert name="conteudo"></ui:insert>
