@@ -1,5 +1,7 @@
 package weedem.produto.controller;
 
+import java.sql.SQLException;
+
 import javax.faces.bean.ManagedBean;
 import javax.inject.Inject;
 
@@ -36,6 +38,14 @@ public class ProdutoDetalheBean {
 			this.falha = !this.venda.adicionaItem(produto);
 			i++;
 
+		}
+	}
+	
+	public void buscarProdutoPorId() throws SQLException {
+		this.produto = this.produtoDAO.buscarPorId(this.id);
+		
+		if (this.produto != null) {
+			this.pesquisado = true;
 		}
 	}
 

@@ -4,7 +4,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/u">
+	xmlns:p="http://primefaces.org/ui">
 
 <h:head></h:head>
 <h:body>
@@ -28,40 +28,40 @@
 						<f:ajax execute="@form" render="@all" />
 					</h:commandButton>
 				</p:panel>
-				<br />
-				<br />
-				<br />
+				<p:panel>
 
-				<h:dataTable value="#{produtoListagemBean.produtos}" var="produto"
-					styleClass="order-table" headerClass="order-table-header"
-					rowClasses="order-table-odd-row,order-table-even-row">
+					<p:dataTable value="#{produtoListagemBean.produtos}" var="produto"
+						rows="10" paginator="true" lazy="true"
+						paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						rowsPerPageTemplate="5,10,15">
 
-					<h:column>
-						<!-- column header -->
-						<f:facet name="header">Código</f:facet>
-						<!-- row record -->
+						<p:column>
+							<!-- column header -->
+							<f:facet name="header">Código</f:facet>
+							<!-- row record -->
     				#{produto.id}
-    			</h:column>
-    			<h:column>
-						<!-- column header -->
-						<f:facet name="header">Imagem</f:facet>
-						<!-- row record -->
-    				#{produto.id}
-    			</h:column>
+    			</p:column>
 
-					<h:column>
-						<f:facet name="header">Nome do Produto</f:facet>
+
+						<p:column>
+							<f:facet name="header">Nome do Produto</f:facet>
     				#{produto.nome}
-    			</h:column>
+    			</p:column>
 
-					<h:column>
-						<f:facet name="header">Preco</f:facet>
+						<p:column>
+							<f:facet name="header">Preco</f:facet>
     				#{produto.preco}
-    			</h:column>
+    			</p:column>
 
-				</h:dataTable>
+					</p:dataTable>
+				</p:panel>
 
 			</h:form>
+			<br />
+			<br />
+			<br />
+
+
 
 
 			<h:outputText rendered="#{produtoListagemBean.produtos.size() == 0}"

@@ -16,9 +16,9 @@
 			<h:form id="buscaId">
 				<h:outputLabel value="ID do Cliente " for="idCliente" />
 				<h:inputText class="idCliente" id="idCliente"
-					value="#{clienteDetalheBean.id}" size="5" />
+					value="#{produtoDetalheBean.id}" size="5" />
 				<h:commandButton partialSubmit="true" value="Buscar"
-					action="#{clienteDetalheBean.buscarClientePorId}">
+					action="#{produtoDetalheBean.buscarProdutoPorId()}">
 					<f:ajax execute="@form" render="@all" />
 				</h:commandButton>
 			</h:form>
@@ -27,20 +27,20 @@
 			<br />
 
 			<h:form id="dadosCliente"
-				rendered="#{clienteDetalheBean.pesquisado == true}">
+				rendered="#{produtoDetalheBean.pesquisado == true}">
 
 
 
 				<h:outputLabel value="ID:" for="idUsuario" />
 				<br />
-				<h:outputText id="idUsuario"
-					value="#{clienteDetalheBean.cliente.id}" size="2" />
+				<h:outputText id="idProduto"
+					value="#{produtoDetalheBean.produto.id}" size="2" />
 				<br />
 				<br />
 
 				<h:outputLabel value="Nome:" for="nome" />
 				<br />
-				<h:outputText id="nome" value="#{clienteDetalheBean.cliente.nome}"
+				<h:outputText id="nome" value="#{produtoDetalheBean.produto.nome}"
 					size="100" />
 				<br />
 				<br />
@@ -48,21 +48,17 @@
 				<h:outputLabel value="Endereço completo:" for="nome" />
 				<br />
 				<h:outputText id="endereco"
-					value="#{clienteDetalheBean.cliente.endereco}" size="100" />
+					value="#{produtoDetalheBean.produto.descricao}" size="100" />
 				<br />
 				<br />
 
 				<h:outputLabel value="CPF:" for="cpf" />
 				<br />
-				<h:outputText id="cpf" value="#{clienteDetalheBean.cliente.cpf}"
+				<h:outputText id="cpf" value="#{produtoDetalheBean.produto.preco}"
 					size="50" />
 				<br />
 				<br />
 
-				<h:outputLabel value="E-Mail:" for="email" />
-				<br />
-				<h:outputText id="email" value="#{clienteDetalheBean.cliente.email}"
-					size="50" />
 				<br />
 				<br />
 				<br></br>

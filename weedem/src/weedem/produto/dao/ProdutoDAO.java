@@ -118,7 +118,7 @@ public class ProdutoDAO {
 	}
 
 	public Produto buscarPorId(int _id) throws SQLException {
-		ResultSet rs = null;
+		ResultSet rsProduto = null;
 		ResultSet rsCategoria = null;
 		ResultSet rsMarca = null;
 
@@ -135,18 +135,19 @@ public class ProdutoDAO {
 		PreparedStatement psMarca = connector.prepareStatement(marcaSQL);;
 		ps.setInt(1, _id);
 
-		rs = ps.executeQuery();
+		rsProduto = ps.executeQuery();
 
-		Produto p = null;
-		if (rs.next()) {
+		Produto e = new Produto();
+		if (rsProduto.next()) {
 
-			Produto e = new Produto();
-			e.setId(rs.getInt(1));
-			psCategoria.setInt(1, rs.getInt(2));
-			psMarca.setInt(1, rs.getInt(3));
+			e.setId(rsProduto.getInt(1));
+
+			
+			psCategoria.setInt(1, rsProduto.getInt(2));
+			psMarca.setInt(1, rsProduto.getInt(3));
 			
 			rsCategoria = psCategoria.executeQuery();
-			rsMarca = psCategoria.executeQuery();
+			rsMarca = psCategoria.getResultSet();
 			
 			while(rsCategoria.next()) {
 				if (e.getCategoria() != null) {
@@ -158,12 +159,14 @@ public class ProdutoDAO {
 					e.setMarca(new Marca(rsMarca.getInt(1), rsMarca.getString(2), rsMarca.getString(3)));
 				}
 			}
-			e.setNome(rs.getString(4));
-			e.setDescricao(rs.getString(5));
-			e.setPreco(rs.getDouble(6));
+			
+			e.setNome(rsProduto.getString(4));
+			e.setDescricao(rsProduto.getString(5));
+			e.setPreco(rsProduto.getDouble(6));
+			e.setImgUrl(rsProduto.getString(7));
 		}
+		return e;
 
-		return p;
 	}
 
 }

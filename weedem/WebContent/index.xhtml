@@ -11,28 +11,8 @@
 <h:body>
 
 
-	<p:layout  style="background-color:black" fullPage="true">
-		<p:layoutUnit zindex="199" style="padding:0;overflow:visible"
-			scrollable="null" position="north" >
-				<h:outputText width="100%" value="Weedem CO." />
-				<h:form columns="1">
-					<p:menubar
-						style="background-color:green">
-						<p:submenu label="Clientes">
-							<p:menuitem value="Busca Cliente" action="exibecliente.xhtml" />
-							<p:menuitem value="Lista de clientes"
-								action="listaclientes.xhtml" ajax="true" />
+	<p:layout style="background-color:black" fullPage="true">
 
-						</p:submenu>
-						<p:submenu label="Produtos">
-							<p:menuitem value="Catálogo de produtos"
-								action="listaprodutos.xhtml" />
-						</p:submenu>
-						<p:submenu label="Carrinho">
-						</p:submenu>
-					</p:menubar>
-				</h:form>
-		</p:layoutUnit>
 
 		<p:layoutUnit position="south" size="50">
 			<h:outputText value="Desenvolvido por Gabriel Broitman" />
@@ -42,7 +22,23 @@
 
 
 		<p:layoutUnit position="center">
-			<ui:insert name="conteudo"></ui:insert>
+			<center>
+				<h:form columns="1">
+					<p:menubar style="background-color:green">
+						<p:menuitem value="Busca Cliente" action="exibecliente.xhtml" />
+						<p:menuitem value="Lista de clientes" action="listaclientes.xhtml"
+							ajax="true" />
+
+						<p:menuitem value="Catálogo de produtos"
+							action="listaprodutos.xhtml" />
+						<p:submenu label="Carrinho">
+						</p:submenu>
+					</p:menubar>
+				</h:form>
+				<p:graphicImage value="logo.png" /><br></br>
+				<h:outputText width="100%" value="Weedem CO." />
+				<ui:insert name="conteudo"></ui:insert>
+			</center>
 		</p:layoutUnit>
 	</p:layout>
 </h:body>
